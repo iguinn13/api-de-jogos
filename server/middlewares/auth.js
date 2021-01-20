@@ -7,7 +7,7 @@ function auth(req, res, next){
         const bearer = authToken.split(' ');
         var token = bearer[1];
 
-        jwt.verify(token, JWT_PASS, (error, datas) => {
+        jwt.verify(token, process.env.JWT_PASS, (error, datas) => {
             if(error){
                 res.statusCode = 401;
                 res.json({error: 'Invalid Token!'});
@@ -22,3 +22,5 @@ function auth(req, res, next){
         res.json({error: 'Invalid token!'});
     }
 }
+
+module.exports = auth;

@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Game = require('../models/Game');
+const auth = require('../middlewares/auth');
 
-router.get('/games', (req, res) => {
+router.get('/games', auth ,(req, res) => {
     Game.findAll().then(games => {
         if(games != undefined || games != null){
             res.json(games);
@@ -11,11 +12,11 @@ router.get('/games', (req, res) => {
             res.sendStatus(404);
         }
     }).catch(err => {
-        res.json({error: err});
+        res.sendStatus(404);
     });
 });
 
-router.post('/games', (req, res) => {
+router.post('/games', auth , (req, res) => {
     var title = req.body.title;
     var category = req.body.category;
     var year = req.body.year;
@@ -33,7 +34,7 @@ router.post('/games', (req, res) => {
     });
 });
 
-router.get('/game/:id', (req, res) => {
+router.get('/game/:id', auth , (req, res) => {
     var id = req.params.id;
 
     Game.findOne({where:{
@@ -50,7 +51,7 @@ router.get('/game/:id', (req, res) => {
     });
 });
 
-router.put('/game/:id', (req, res) => {
+router.put('/game/:id', auth , (req, res) => {
     var id = req.params.id;
     var { title, category, year, price } = req.body;
 
@@ -99,7 +100,7 @@ router.put('/game/:id', (req, res) => {
     }
 });
 
-router.delete('/game/:id', (req, res) => {
+router.delete('/game/:id', auth , (req, res) => {
     var id = req.params.id;
 
     Game.destroy(
