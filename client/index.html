@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Consumindo api</title>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Login</h1>
+
+        <input type="text" name="email" id="email" placeholder="E-mail" class="form-control mb-3">
+        <input type="password" name="password" id="password" placeholder="Senha" class="form-control">
+
+        <button class="btn btn-secondary w-100 mt-3" onclick="login()">Entrar</button>
+
+        <hr>
+
+        <h1>Lista de jogos:</h1>
+
+        <hr>
+
+        <ul id="games"></ul>
+
+        <hr>
+
+        <h1>Criar Jogo</h1>
+
+        <input type="text" name="title" id="title" placeholder="Titulo" class="form-control mb-3">
+        <input type="text" name="category" id="category" placeholder="Categoria" class="form-control mb-3">
+        <input type="number" name="year" id="year" placeholder="Ano de lancamento" class="form-control mb-3">
+        <input type="number" name="price" id="price" placeholder="Preco" class="form-control">
+
+        <button class="btn btn-primary mt-3 w-100" onclick="createGame()">Criar</button>
+
+        <hr>
+        
+        <h1>Editar jogo</h1>
+
+        <input type="hidden" name="editId" id="editId" placeholder="id">
+        <input type="text" name="editTitle" id="editTitle" placeholder="Titulo" class="form-control mb-3">
+        <input type="text" name="editCategory" id="editCategory" placeholder="Categoria" class="form-control mb-3">
+        <input type="number" name="editYear" id="editYear" placeholder="Ano de lancamento" class="form-control mb-3">
+        <input type="number" name="editPrice" id="editPrice" placeholder="Preco" class="form-control">
+
+        <button class="btn btn-warning mt-3 mb-5 w-100" onclick="updateGame()">Editar</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/consumir_api.js"></script>
+  </body>
+</html>

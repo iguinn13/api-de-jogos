@@ -30,6 +30,7 @@ router.post('/games', auth , (req, res) => {
     }).then(() => {
         res.sendStatus(200);
     }).catch(err => {
+        res.statusCode = 400;
         res.json({error: err});
     });
 });
